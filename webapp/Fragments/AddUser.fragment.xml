@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns:layout2="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout.form">
+    <Dialog
+        id="approveDialog"
+        title="Enter Details"
+        beginButton="{i18n>SubmitButton}"
+        endButton="{i18n>CancelButton}">
+        <!-- SimpleForm for Responsive Layout -->
+        <layout:SimpleForm
+            id="dialogForm"
+            layout="ResponsiveGridLayout"
+            labelSpanL="2"
+            labelSpanM="2"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="2"
+            columnsM="2"
+            adjustLabelSpan="false">
+            
+            <!-- Username -->
+          
+            
+            <Label text="{i18n>userName}" class="sapUiTinyMarginTop " design="Bold"/>
+            <Input id="usernameInput" placeholder="{i18n>EnterUsername}" value="{/UserName}" liveChange="onLiveChange"/>
+           
+            <!-- First Name -->
+            <Label text="{i18n>firstName}" class="sapUiTinyMarginTop" design="Bold"/>
+            <Input id="firstnameInput" placeholder="{i18n>EnterFirstName}" value="{/FirstName}"/>
+            
+            <!-- Last Name -->
+            <Label text="{i18n>lastName}" class="sapUiTinyMarginTop " design="Bold"/>
+            <Input id="lastnameInput" placeholder="{i18n>EnterLastName}" value="{/LastName}"/>
+            
+            <!-- Age -->
+            <Label text="{i18n>age}" class="sapUiTinyMarginTop " design="Bold"/>
+            <Input id="ageInput" placeholder="{i18n>EnterAge}" value="{/Age}"/>
+            
+        </layout:SimpleForm>
+
+        <beginButton>
+            <Button
+                type="Emphasized"
+                text="{i18n>ok}"
+                press="onOkPress"/>
+        </beginButton>
+        <endButton>
+            <Button
+                text="{i18n>Cancel}"
+                press="onCancelPress"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

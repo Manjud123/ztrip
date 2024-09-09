@@ -1,0 +1,130 @@
+<mvc:View controllerName="ui5.ztrip.controller.Main"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:semantic="sap.f.semantic">
+	<Page id="page" title="{i18n>title}" titleAlignment="Center">
+		<content>
+			<l:ResponsiveSplitter defaultPane="IdListPane">
+				<l:PaneContainer orientation="Horizontal">
+					<l:SplitPane id="IdListPane">
+						<l:layoutData>
+							<l:SplitterLayoutData id="idListLayout" size="100%" resizable="false"/>
+						</l:layoutData>
+						<Table growing="true" id="idUserTable" sticky="ColumnHeaders,HeaderToolbar"
+                               growingThreshold="10" mode="SingleSelectLeft"
+		                       selectionChange=".onSelectionChange"
+                            items="{path:'/People',parameters:{$$updateGroupId : 'peopleGroup'}}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="{i18n>users}"
+										titleStyle="H3"
+										level="H3"/>
+										<ToolbarSpacer/>
+										<SearchField
+											id="searchField"
+											width="20%"
+											placeholder="{i18n>searchFieldPlaceholder}"
+											search=".onSearch"/>
+										<Button
+											id="addUserButton"
+											icon="sap-icon://add"
+											tooltip="{i18n>createButtonText}"
+											press=".onAddrow"></Button>
+										<!-- <Button
+											id="idSave"
+											text="Save"
+											tooltip="{i18n>Save}"
+											press=".onSave"></Button> -->
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="{i18n>userName}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>firstName}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>lastName}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>age}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{UserName}"/>
+									</cells>
+									<cells>
+										<Text text="{FirstName}"/>
+									</cells>
+									<cells>
+										<Text text="{LastName}"/>
+									</cells>
+									<cells>
+										<Text text="{Age}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</l:SplitPane>
+					<l:SplitPane id="idDetails">
+						<semantic:SemanticPage id="detailArea" visible="false">
+							<semantic:titleHeading>
+								<Title
+												text="{UserName}"
+												level="H2"/>
+							</semantic:titleHeading>
+							<!-- <Table items="/Trips"></Table> -->
+							<Table 
+													id="TripsTable"
+													width="auto"
+													items="{TripsModel>/}"
+													noDataText="No Data"
+													class="sapUiSmallMarginBottom">
+								<headerToolbar>
+									<Toolbar>
+										<Title
+																text="{i18n>tripsWithNoFriends}"
+																titleStyle="H3"
+																level="H3"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<Text text="{i18n>tripId}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>name}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>description}"/>
+									</Column>
+									<!-- <Column><Text text="Age"/></Column> -->
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{TripsModel>TripId}"/>
+										</cells>
+										<cells>
+											<Text text="{TripsModel>Name}"/>
+										</cells>
+										<cells>
+											<Text text="{TripsModel>Description}"/>
+										</cells>
+										<!-- <cells><Text text=""/></cells> -->
+									</ColumnListItem>
+								</items>
+							</Table>
+						</semantic:SemanticPage>
+					</l:SplitPane>
+				</l:PaneContainer>
+			</l:ResponsiveSplitter>
+		</content>
+	</Page>
+</mvc:View>

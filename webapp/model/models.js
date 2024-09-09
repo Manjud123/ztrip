@@ -1,0 +1,48 @@
+sap.ui.define([
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/Device"
+], 
+function (JSONModel, Device) {
+    "use strict";
+
+    return {
+        /**
+         * Provides runtime info for the device the UI5 app is running on as JSONModel
+         */
+        createDeviceModel: function () {
+            var oModel = new JSONModel(Device);
+            oModel.setDefaultBindingMode("OneWay");
+            return oModel;
+        },
+        initializeUserModel:function(){
+            var oModel = new JSONModel({
+                "UserName": "",
+                "FirstName": "",
+                "LastName": "",
+                "Age": ""
+            });
+            return oModel;
+
+        },
+        getInvolvedPeople:function(){
+            var aInvolvedPeople = [
+                    {
+                        "UserName": "John Doe",
+                        "FirstName": "John",
+                        "LastName": "Doe",
+                        "Age": "25"
+                    },
+                    {
+                        "UserName": "Jane Doe",
+                        "FirstName": "Jane",
+                        "LastName": "Doe",
+                        "Age": "23"
+                    }
+                ]
+            ;
+            return aInvolvedPeople;
+        }
+   
+    };
+
+});
