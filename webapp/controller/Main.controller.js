@@ -152,7 +152,7 @@ function(Controller, Fragment, MessageBox, MessageToast, Sorter, Filter, FilterO
             let aPromises = aTrips.map(function(oTrip, i) {
                 // @ts-ignore
                 return new Promise(function(resolve, reject) {
-                    var sPathNwe = sPath + "/" + "Trips(" + i + ")" + "/" + "GetInvolvedPeople";
+                    var sPathNwe = sPath + "/" + "Trips(" + oTrip.TripId + ")" + "/" + "GetInvolvedPeople";
                     oModel.bindContext(sPathNwe, oContext, {
                         $$groupId: "batchFunctionImport"
                     }).requestObject().then(function(oData) {
